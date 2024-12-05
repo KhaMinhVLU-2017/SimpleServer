@@ -75,12 +75,13 @@ namespace simpleServer.Https.Methods
             return originMatch.Value;
         }
 
-        private IDictionary<string, object> GetPararms(string path)
+        private IDictionary<string, object> GetPararms(string pathRequest)
         {
             string paramsPattern = @"\?.*";
+            string path = Uri.UnescapeDataString(pathRequest);
             Regex paramsRg = new Regex(paramsPattern);
             string paramsPath = paramsRg.Match(path).Value.Trim('?');
-            string pattern = @"[\w+=\w+]+";
+            string pattern = @"[\w+=(\w+|\s+|'<>.^*()%!-]+";
             Regex rg = new Regex(pattern);
             var matches = rg.Matches(paramsPath).ToArray();
             var kv = new List<KeyValuePair<string, object>>();

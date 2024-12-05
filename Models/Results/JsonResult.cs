@@ -1,3 +1,4 @@
+using System.Text;
 using Newtonsoft.Json;
 using simpleServer.Constants;
 using simpleServer.Https.Models;
@@ -20,8 +21,9 @@ namespace simpleServer.Models.Results
             if (_content is not null)
             {
                 string dataText = _content is null ? string.Empty : JsonConvert.SerializeObject(_content);
-                response.Payload.Data = _content;
-                response.Header.ContentLength = dataText.Length + 100;
+                var bytes = Encoding.ASCII.GetBytes(dataText);
+                response.Payload.Bytes = bytes;
+                response.Header.ContentLength = bytes.Length;
             }
         }
     }
