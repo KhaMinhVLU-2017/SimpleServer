@@ -59,6 +59,10 @@ __Strategy pattern__:
 __Pipeline pattern__: use for ordering middleware of simple server.
 
 ### How to use it?
+Access to simpleServer then run cli: `dotnet run`
+You will see results similar below it.
+![StreamConsole](/Files/console.jpg)
+
 You can navigate to `HomesController` and then use Postman to test it.  
 
 __Sample__:  
@@ -80,5 +84,22 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages
 https://datatracker.ietf.org/doc/html/rfc2616
 https://learn.microsoft.com/en-us/dotnet/fundamentals/networking/sockets/socket-services  
 Book: __TCP/IP Sockets in C#__
+
+## Release
+### Version 1.0.1 - 12-17-2024
+The Simple Server support __TCP and UDP__ protocol.  
+The user can config at `serverSetting.json` with values: `udp` or `tcp` on protocol property.  
+```
+{
+    "servers": {
+        "host": "localhost",
+        "port": 5000,
+        "cors": "*",
+        "protocol": "udp"  
+    }
+}
+```
+See more [TCP](/Protocols/TcpProtocol.cs) or [UDP](/Protocols/UdpProtocol.cs) protocol.
+
 
 *Thanks for watching*

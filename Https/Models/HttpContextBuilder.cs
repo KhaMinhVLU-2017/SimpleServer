@@ -1,4 +1,5 @@
 using System.Net.Sockets;
+using SimpleServer.Protocols;
 
 namespace simpleServer.Https.Models
 {
@@ -7,7 +8,7 @@ namespace simpleServer.Https.Models
         private HttpRequest _request;
         private HttpResponse _response;
         private long _correlationId;
-        private Socket _socket;
+        private IAppSocket _socket;
 
         public HttpContextBuilder AddRequest(HttpRequest request)
         {
@@ -27,7 +28,7 @@ namespace simpleServer.Https.Models
             return this;
         }
 
-        public HttpContextBuilder AddSocket(Socket socket)
+        public HttpContextBuilder AddSocket(IAppSocket socket)
         {
             _socket = socket;
             return this;

@@ -2,6 +2,7 @@
     "servers": {
         "host": "localhost",
         "port": 5000,
-        "cors": "*"
+        "cors": "*",
+        "protocol": "udp"
     }
 }

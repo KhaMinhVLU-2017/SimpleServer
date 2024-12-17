@@ -23,7 +23,7 @@ namespace simpleServer.Helpers
         {
             var option = OptionHelper.GetServerSettings().Servers;
             WriteLine("Welcome to Mini Server");
-            WriteLine($"Server start at: {host}");
+            WriteLine($"Server start at: {host} with Protocol: {option.Protocol.ToUpper()}");
         }
     }
 }
