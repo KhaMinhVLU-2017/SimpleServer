@@ -8,6 +8,7 @@ namespace simpleServer.Servers
         private int _port;
         private string _url;
         private string _cors;
+        private string _protocol;
 
         public ServerBuilder() : this(null) { }
 
@@ -21,6 +22,7 @@ namespace simpleServer.Servers
             _port = option.Port;
             _url = option.HOST;
             _cors = option.Cors;
+            _protocol = option.Protocol;
         }
 
         public ServerBuilder AddPort(int port)
@@ -41,7 +43,8 @@ namespace simpleServer.Servers
             {
                 HOST = _url,
                 Port = _port,
-                Cors = _cors
+                Cors = _cors,
+                Protocol = _protocol
             };
             return new ServerApp(option);
         }
