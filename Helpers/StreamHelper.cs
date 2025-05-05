@@ -13,5 +13,19 @@ namespace simpleServer.Helpers
             }
             return rv;
         }
+
+        // TODO Need read current binaries stream of streamreader.
+        public static byte[] ConvertBianaries(StreamReader stream)
+        {
+            byte[] bytes = null;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                int b = 0;
+                while ((b = stream.Read()) != -1)
+                    ms.WriteByte((byte)b);
+                bytes = ms.ToArray();
+            }
+            return bytes;
+        }
     }
 }

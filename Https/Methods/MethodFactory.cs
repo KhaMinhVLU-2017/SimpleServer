@@ -1,17 +1,19 @@
+using System.Text;
 using simpleServer.Constants;
 
 namespace simpleServer.Https.Methods
 {
     public static class MethodFactory
     {
-        public static IMethod Create(string method, string content)
+        public static IMethod Create(string method, byte[] buffer)
         {
+            var content = Encoding.ASCII.GetString(buffer);
             switch (method)
             {
                 case HTTPConstant.GET_METHOD:
                     return new GetMethod(content);
                 case HTTPConstant.POST_METHOD:
-                    return new PostMethod(content);
+                    return new PostMethod(buffer, content);
                 case HTTPConstant.DELETE_METHOD:
                     return new DeleteMethod(content);
                 case HTTPConstant.PUT_METHOD:

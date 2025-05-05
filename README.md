@@ -34,9 +34,10 @@ Let's study together, let's goooooooooooooooooooooo.
      * Server error responses (500 – 599)
 * MVC
   * Controllers and Views folders
+* __REST API__: POST
 
 ❌ Pending features:
-* __REST API__: POST, PUT, DELETE, PATH, OPTION, HEAD
+* __REST API__: PUT, DELETE, PATH, OPTION, HEAD
 * __Protocol__: Http2.0
 
 ## Technologies & Pattern
@@ -78,6 +79,12 @@ __Return Image: GET {{host}}/homes/image__
 __MVC - View: GET {{host}}/homes/about__
 ![View](/Files/view.jpg)
 
+__Setup POST METHOD__
+
+Config [POST Attribute](/Attributes/HttpPostAttribute.cs) on [HomesController](/Controllers/HomesController.cs)
+![Setup](/Files/homeCreate.png)
+Testing with postman
+![Postman](/Files/postman.png)
 
 ## Reference
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages
@@ -101,5 +108,8 @@ The user can config at `serverSetting.json` with values: `udp` or `tcp` on proto
 ```
 See more [TCP](/Protocols/TcpProtocol.cs) or [UDP](/Protocols/UdpProtocol.cs) protocol.
 
+
+### Version 1.1.0 05-05-2025
+The simple server supported __POST Method__ with content type: __Application/json__
 
 *Thanks for watching*

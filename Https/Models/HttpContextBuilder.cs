@@ -1,4 +1,4 @@
-using System.Net.Sockets;
+using simpleServer.Helpers;
 using SimpleServer.Protocols;
 
 namespace simpleServer.Https.Models
@@ -13,6 +13,12 @@ namespace simpleServer.Https.Models
         public HttpContextBuilder AddRequest(HttpRequest request)
         {
             _request = request;
+            return this;
+        }
+
+        public HttpContextBuilder AddRequest(byte[] bytesRequest)
+        {
+            _request = bytesRequest.CreateHttpRequestFromText();
             return this;
         }
 

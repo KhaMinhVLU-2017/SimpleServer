@@ -3,6 +3,6 @@
         "host": "localhost",
         "port": 5000,
         "cors": "*",
-        "protocol": "udp"
+        "protocol": "tcp"
     }
 }

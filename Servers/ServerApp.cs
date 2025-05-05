@@ -28,9 +28,7 @@ namespace simpleServer.Servers
                     socket.Close();
                     continue;
                 }
-                var request = Encoding.ASCII.GetString(buffer);
-
-                contextBuilder.AddRequest(request.CreateHttpRequestFromText());
+                contextBuilder.AddRequest(buffer);
                 await ConfigureAsync(contextBuilder.Build());
             }
         }

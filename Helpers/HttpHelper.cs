@@ -1,3 +1,4 @@
+using System.Text;
 using simpleServer.Constants;
 using simpleServer.Exceptions;
 using simpleServer.Https.Models;
@@ -34,10 +35,11 @@ namespace simpleServer.Helpers
             }
         }
 
-        public static HttpRequest CreateHttpRequestFromText(this string content)
+        public static HttpRequest CreateHttpRequestFromText(this byte[] buffer)
         {
-            var method = GetMethodFromRequest(content);
-            var requestInner = MethodFactory.Create(method, content);
+            var request = Encoding.ASCII.GetString(buffer);
+            var method = GetMethodFromRequest(request);
+            var requestInner = MethodFactory.Create(method, buffer);
             return requestInner.Compile();
         }
 

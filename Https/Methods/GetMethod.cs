@@ -84,16 +84,17 @@ namespace simpleServer.Https.Methods
             string pattern = @"[\w+=(\w+|\s+|'<>.^*()%!-]+";
             Regex rg = new Regex(pattern);
             var matches = rg.Matches(paramsPath).ToArray();
-            var kv = new List<KeyValuePair<string, object>>();
+            var dic = new Dictionary<string, object>();
             foreach (var match in matches)
             {
                 var arr = match.Value.Split("=");
-                string key = arr[0];
-                object value = arr[1];
-                kv.Add(new KeyValuePair<string, object>(key, value));
+                string key = arr[0].Trim();
+                object value = arr[1].Trim();
+                if (dic.ContainsKey(key)) continue;
+                dic.Add(key, value);
             }
 
-            return kv.ToDictionary();
+            return dic;
         }
     }
 }

@@ -1,6 +1,6 @@
+using simpleServer.Attributes;
 using simpleServer.Constants;
 using simpleServer.Helpers;
-using simpleServer.Https.Models;
 using simpleServer.Models.Requests;
 using simpleServer.Models.Results;
 using simpleServer.Options;
@@ -37,6 +37,7 @@ namespace simpleServer.Controllers
             return Html(html);
         }
 
+        [HttpPost]
         public async Task<IResult> CreateAsync(CreateProduct request)
         {
             Console.WriteLine($"Created");
